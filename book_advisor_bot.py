@@ -103,7 +103,7 @@ def test_send_message_with_markdown(self):
     *bold text*
     _italic text_
     """
-    msg = tb.send_message(CHAT_ID, markdown, parse_mode="Markdown")
+    msg = tb.send_message(chat_id, markdown, parse_mode="Markdown")
     assert msg.message_id
 
 def printBook(book):
@@ -189,7 +189,7 @@ def main_query_handler(call):
         
     elif call.data in bookTitles:
         for book in bookList:
-            if call.data == book[0]:
+            if (call.data == book[0] or call.data).startswith(str):
                 text = printBook(book)
                 bot.send_message(call.message.chat.id, text, parse_mode= "Markdown")  
         
@@ -265,5 +265,3 @@ def search(message):
         pass
 
 bot.polling()
-
-cnxn.close()
