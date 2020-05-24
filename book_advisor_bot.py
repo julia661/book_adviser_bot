@@ -189,7 +189,7 @@ def main_query_handler(call):
         
     elif call.data in bookTitles:
         for book in bookList:
-            if (call.data == book[0] or call.data).startswith(str):
+            if (call.data == book[0] or (call.data).startswith(book[0][0:30])):
                 text = printBook(book)
                 bot.send_message(call.message.chat.id, text, parse_mode= "Markdown")  
         
