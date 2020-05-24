@@ -1,1 +1,1 @@
-web: python book_advisor_bot.py
+worker: python book_advisor_bot.py
